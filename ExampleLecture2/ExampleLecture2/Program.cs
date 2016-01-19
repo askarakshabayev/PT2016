@@ -9,40 +9,23 @@ namespace ExampleLecture2
 {
     class Program
     {
-        public static void WalkDirectoryTree(DirectoryInfo d, int depth)
+        static void watcher_changed(object sender, FileSystemEventArgs e)
         {
-            try {
-                foreach (FileInfo file in d.GetFiles())
-                {
-                    Console.WriteLine("Depth={0}, File={1}", depth, file.Name);
-                }
-                foreach (DirectoryInfo directory in d.GetDirectories())
-                {
-                    Console.WriteLine("Depth={0}, Directory={1}", depth, directory.Name);
-                    WalkDirectoryTree(directory, depth + 1);
-                }
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.ReadKey();
-            }
+            Console.WriteLine("Directory changed {0}, {1}", e.GetType(), e.FullPath);
+        }
+        static void watcher_changed1(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("asdf {0}, {1}", e.GetType(), e.FullPath);
         }
         static void Main(string[] args)
         {
-            DirectoryInfo d = new DirectoryInfo(@"c:\windows");
-            WalkDirectoryTree(d, 0);
-            //FileInfo[] files = d.GetFiles();
-            //foreach(FileInfo file in files)
-            //{
-            //    Console.WriteLine("File: {0}", file.Name);
-            //}
+            FileSystemWatcher fw = new FileSystemWatcher();
+            fw.Path = @"c:\testfolder";
 
-            //DirectoryInfo[] directories = d.GetDirectories();
-            //foreach(DirectoryInfo di in directories)
-            //{
-                
-            //    Console.WriteLine("Directory: {0}", di.Name);
-            //}
+            fw.Created += new FileSystemEventHandler(watcher_changed);
+            fw.Created += new FileSystemEventHandler(watcher_changed1);
+
+            fw.EnableRaisingEvents = true;
 
             Console.ReadKey();
         }
