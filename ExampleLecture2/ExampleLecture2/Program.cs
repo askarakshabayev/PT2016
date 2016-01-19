@@ -11,16 +11,15 @@ namespace ExampleLecture2
     {
         static void Main(string[] args)
         {
-            // FileInfo
-            // DirectoryInfo
-
-            FileInfo file = new FileInfo(@"c:\testfolder\in1.txt");
-            if (file.Exists)
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            try {
+                int c = a / b;
+                Console.WriteLine(c);
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("File name {0}, File fullname {1}", file.Name, file.FullName);
-            } else
-            {
-                Console.WriteLine("Error");
+                Console.WriteLine(e.Message);
             }
             Console.ReadKey();
         }
