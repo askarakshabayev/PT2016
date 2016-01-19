@@ -9,18 +9,41 @@ namespace ExampleLecture2
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void WalkDirectoryTree(DirectoryInfo d, int depth)
         {
-            int a = int.Parse(Console.ReadLine());
-            int b = int.Parse(Console.ReadLine());
             try {
-                int c = a / b;
-                Console.WriteLine(c);
-            }
-            catch (Exception e)
+                foreach (FileInfo file in d.GetFiles())
+                {
+                    Console.WriteLine("Depth={0}, File={1}", depth, file.Name);
+                }
+                foreach (DirectoryInfo directory in d.GetDirectories())
+                {
+                    Console.WriteLine("Depth={0}, Directory={1}", depth, directory.Name);
+                    WalkDirectoryTree(directory, depth + 1);
+                }
+            }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ReadKey();
             }
+        }
+        static void Main(string[] args)
+        {
+            DirectoryInfo d = new DirectoryInfo(@"c:\windows");
+            WalkDirectoryTree(d, 0);
+            //FileInfo[] files = d.GetFiles();
+            //foreach(FileInfo file in files)
+            //{
+            //    Console.WriteLine("File: {0}", file.Name);
+            //}
+
+            //DirectoryInfo[] directories = d.GetDirectories();
+            //foreach(DirectoryInfo di in directories)
+            //{
+                
+            //    Console.WriteLine("Directory: {0}", di.Name);
+            //}
+
             Console.ReadKey();
         }
     }
