@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 
 namespace FileExample
 {
+    class Complex
+    {
+        // a = 5, b = 6 -> 5/6
+        public int a, b;
+
+        public override string ToString()
+        {
+            return a + "/" + b;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            string[] token = Console.ReadLine().Split();
-            int a = int.Parse(token[0]);
-            int b = int.Parse(token[1]);
-            int c = a + b;
+            Complex c = new Complex();
+            c.a = 5;
+            c.b = 6;
             Console.WriteLine(c);
-            Console.WriteLine("hello world");
             Console.ReadKey();
         }
     }
