@@ -9,46 +9,29 @@ namespace Lecture3
 {
     class Program
     {
-        static void WalkTreeDirectory(DirectoryInfo d, int depth)
+        static void watcher_changed(object sender, FileSystemEventArgs e)
         {
-            try {
-                // list all files
-                foreach (FileInfo file in d.GetFiles())
-                {
-                    for (int i = 0; i < 2 * depth; i++)
-                        Console.Write(" ");
-                    Console.WriteLine("Depth: {0}, Name: {1}", depth, file.Name);
-                }
-
-                // list all folders
-                foreach (DirectoryInfo directory in d.GetDirectories())
-                {
-                    for (int i = 0; i < 2 * depth; i++)
-                        Console.Write(" ");
-                    Console.WriteLine("Depth: {0}, Name: {1}", depth, directory.Name);
-                    WalkTreeDirectory(directory, depth + 1);
-                }
-            } catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.ReadKey();
-            }
+            Console.WriteLine("Directory changed {0}, {1}", e.GetType(), e.FullPath);
         }
-
-        // testfolder
-        // --in1.txt
-        // --in2.txt
-        // --test
-        // ----a.txt
-        // ----b.txt
-        // ----c
-        // ------q.txt
-        // ------w.txt
+        static void watcher_changed1(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("Directory changed {0}, {1}", e.GetType(), e.FullPath);
+        }
+        static void watcher_changed2(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("Deleted {0}, {1}", e.GetType(), e.FullPath);
+        }
 
         static void Main(string[] args)
         {
-            DirectoryInfo d = new DirectoryInfo(@"c:\windows");
-            WalkTreeDirectory(d, 1);
+            FileSystemWatcher fw = new FileSystemWatcher();
+            fw.Path = @"c:\testfolder";
+
+            fw.Created += new FileSystemEventHandler(watcher_changed);
+            fw.Created += new FileSystemEventHandler(watcher_changed1);
+
+            fw.Deleted += new FileSystemEventHandler(watcher_changed2);
+            fw.EnableRaisingEvents = true;
             Console.ReadKey();
         }
     }
