@@ -9,41 +9,38 @@ namespace ConsoleApplication2
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            DirectoryInfo d = new DirectoryInfo(@"c:\testfolder");
-            FileInfo[] files = d.GetFiles();
-            int index = 0;
-
-            while (true)
+            int x = 0, y = 0;
+            while(true)
             {
-                for (int i = 0; i < files.Length; i++)
-                {
-                    if (index == i)
-                    {
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
-                        Console.ForegroundColor = ConsoleColor.White;
-                    } else
-                    {
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    Console.WriteLine(files[i].Name);
-                }
+                Console.SetCursorPosition(x, y);
+                Console.ForegroundColor = ConsoleColor.Yellow;
 
-                ConsoleKeyInfo key = Console.ReadKey();
-                if (key.Key == ConsoleKey.UpArrow)
+                Console.Write("*");
+
+                ConsoleKeyInfo button = Console.ReadKey();
+                if (button.Key == ConsoleKey.UpArrow)
                 {
-                    if (index > 0)
-                        index--;
+                    y--;
                 }
-                if (key.Key == ConsoleKey.DownArrow)
+                if (button.Key == ConsoleKey.DownArrow)
                 {
-                    if (index < files.Length - 1)
-                        index++;
+                    y++;
                 }
-                if (key.Key == ConsoleKey.Escape)
-                    break;
+                if (button.Key == ConsoleKey.LeftArrow)
+                {
+                    x--;
+                }
+                if (button.Key == ConsoleKey.LeftArrow)
+                {
+                    x--;
+                }
+                if (button.Key == ConsoleKey.RightArrow)
+                {
+                    x++;
+                }
                 Console.Clear();
             }
         }
