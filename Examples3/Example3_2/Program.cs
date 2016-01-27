@@ -12,6 +12,7 @@ namespace Example3_2
         {
             while (true)
             {
+                Console.SetCursorPosition(10, 10);
                 ConsoleKeyInfo pressKey = Console.ReadKey();
                 if (pressKey.Key == ConsoleKey.LeftArrow)
                     Console.WriteLine("Left");
@@ -19,7 +20,8 @@ namespace Example3_2
                     Console.WriteLine("Right");
                 if (pressKey.Key == ConsoleKey.UpArrow)
                     Console.WriteLine("Up");
-                if (pressKey.Key == ConsoleKey.DownArrow)
+                if (pressKey.Key == ConsoleKey.
+                    )
                     Console.WriteLine("Down");
 
                 if (pressKey.Key == ConsoleKey.Escape)
