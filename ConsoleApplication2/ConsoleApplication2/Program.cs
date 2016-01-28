@@ -23,23 +23,31 @@ namespace ConsoleApplication2
                 ConsoleKeyInfo button = Console.ReadKey();
                 if (button.Key == ConsoleKey.UpArrow)
                 {
-                    y--;
+                    if (y - 1 < 0)
+                        y = Console.WindowHeight;
+                    else
+                        y--;
                 }
                 if (button.Key == ConsoleKey.DownArrow)
                 {
-                    y++;
+                    if (y + 1 > Console.WindowHeight - 10)
+                        y = 0;
+                    else
+                        y++;
                 }
                 if (button.Key == ConsoleKey.LeftArrow)
                 {
-                    x--;
-                }
-                if (button.Key == ConsoleKey.LeftArrow)
-                {
-                    x--;
+                    if (x - 1 < 0)
+                        x = Console.WindowWidth;
+                    else
+                        x--;
                 }
                 if (button.Key == ConsoleKey.RightArrow)
                 {
-                    x++;
+                    if (x + 1 > Console.WindowWidth - 10)
+                        x = 0;
+                    else
+                        x++;
                 }
                 Console.Clear();
             }
