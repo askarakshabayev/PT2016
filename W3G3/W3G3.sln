@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W3G3", "W3G3\W3G3.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadKeyExample", "ReadKeyExample\ReadKeyExample.csproj", "{D983EF14-916F-4BC4-97E2-7E22BB2B0CB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFar", "SimpleFar\SimpleFar.csproj", "{907F1AB8-D414-4AF8-BAC9-CC80A987836C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D983EF14-916F-4BC4-97E2-7E22BB2B0CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D983EF14-916F-4BC4-97E2-7E22BB2B0CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D983EF14-916F-4BC4-97E2-7E22BB2B0CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907F1AB8-D414-4AF8-BAC9-CC80A987836C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907F1AB8-D414-4AF8-BAC9-CC80A987836C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907F1AB8-D414-4AF8-BAC9-CC80A987836C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907F1AB8-D414-4AF8-BAC9-CC80A987836C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
