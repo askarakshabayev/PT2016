@@ -13,7 +13,6 @@ namespace SnakeGameW4G3
         {
             color = ConsoleColor.Green;
             sign = '#';
-            LoadLevel(1);
         }
         public void LoadLevel(int level) {
             string fileName = string.Format("level{0}.txt", level);

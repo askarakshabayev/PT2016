@@ -22,6 +22,8 @@ namespace SnakeGameW4G3
         public void Init()
         {
             food.SetNewPosition();
+            wall.LoadLevel(1);
+
         }
 
         public void Play()
@@ -44,6 +46,10 @@ namespace SnakeGameW4G3
 
                 if (button.Key == ConsoleKey.F5)
                     wall.LoadLevel(2);
+                if (button.Key == ConsoleKey.F2)
+                    Save();
+                if (button.Key == ConsoleKey.F3)
+                    Resume();
                 GameOver = snake.CollistionWithWall();
             }
             Console.Clear();
@@ -59,5 +65,18 @@ namespace SnakeGameW4G3
             snake.Draw();
             wall.Draw();
         }
+        public void Save()
+        {
+            snake.Save();
+            food.Save();
+            wall.Save();
+        }
+        public void Resume()
+        {
+            snake.Resume();
+            food.Resume();
+            wall.Resume();
+        }
+
     }
 }
